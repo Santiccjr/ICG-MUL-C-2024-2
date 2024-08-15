@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Figura en Canvas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Botones para seleccionar el modo -->
+        <div class="radial-buttons">
+            <button id="cartesian" class="radial-button active">Cartesiano</button>
+            <button id="polar" class="radial-button">Polar</button>
+        </div>
+
+        <!-- Menú desplegable para seleccionar la figura -->
+        <div class="dropdown">
+            <button class="dropdown-toggle">Selecciona figura</button>
+            <ul class="dropdown-menu">
+                <li><a href="#" data-figure="circle">Círculo</a></li>
+                <li><a href="#" data-figure="square">Cuadrado</a></li>
+                <li><a href="#" data-figure="triangle">Triángulo</a></li>
+            </ul>
+        </div>
+
+        <!-- Formulario para ingresar coordenadas y ajustes de figura -->
+        <div class="input-coordinates">
+            <label for="x-coordinate">X:</label>
+            <input type="number" id="x-coordinate" step="any">
+            <label for="y-coordinate">Y:</label>
+            <input type="number" id="y-coordinate" step="any">
+            <label for="radius">Radio:</label>
+            <input type="number" id="radius" step="any">
+            <label for="color">Color:</label>
+            <input type="color" id="color">
+            <label for="border-color">Color borde:</label>
+            <input type="color" id="border-color">
+            <label for="border-width">Ancho borde:</label>
+            <input type="number" id="border-width" step="1">
+            <button id="update-figure">Actualizar Figura</button>
+        </div>
+
+        <!-- Canvas para dibujar las figuras -->
+        <canvas id="figure-canvas" width="500" height="500"></canvas>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
