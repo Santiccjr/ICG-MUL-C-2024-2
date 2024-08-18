@@ -1,17 +1,16 @@
 /* styles.css */
 
-/* Estilos básicos para la estructura del cuerpo */
 body {
+    margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
     background-color: #f0f0f0;
 }
 
-/* Contenedor principal centrado */
 .container {
+    margin-top: 30vh;
     position: relative;
     text-align: center;
     background-color: white;
@@ -20,7 +19,6 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilos para los botones radiales circulares */
 .radial-buttons {
     margin-bottom: 20px;
     display: flex;
@@ -47,7 +45,6 @@ body {
     background-color: #555;
 }
 
-/* Estilos para el botón desplegable */
 .dropdown {
     position: relative;
     display: inline-block;
@@ -64,7 +61,6 @@ body {
     margin: 10px auto;
 }
 
-/* Estilos para el menú desplegable */
 .dropdown-menu {
     display: none;
     position: absolute;
@@ -76,13 +72,8 @@ body {
     z-index: 1;
     border-radius: 4px;
     text-align: left;
-    top: 100%; /* Ajusta para que aparezca justo debajo del botón */
+    top: 100%;
     left: 0;
-}
-
-.dropdown-menu > li {
-    padding: 0;
-    margin: 0;
 }
 
 .dropdown-menu > li > a {
@@ -96,7 +87,6 @@ body {
     background-color: #111;
 }
 
-/* Estilos para el formulario de coordenadas */
 .input-coordinates {
     margin: 20px 0;
     display: flex;
@@ -107,11 +97,11 @@ body {
 
 .input-coordinates label {
     font-size: 14px;
-    color: black; /* Color del texto */
+    color: black;
 }
 
 .input-coordinates input {
-    width: 60px;
+    width: 80px;
     padding: 5px;
     font-size: 14px;
 }
@@ -129,7 +119,6 @@ body {
     background-color: #555;
 }
 
-/* Estilos para el canvas */
 #figure-canvas {
     border: 1px solid #ccc;
     background-color: #fafafa;
