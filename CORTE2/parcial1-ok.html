@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,28 +11,43 @@
         }
     </style>
 </head>
+
 <body>
     <h1>Dibujar Polígono</h1>
     <form id="poligonoForm">
         <label for="x">Centro X:</label>
-        <input type="number" id="x" name="x" step="any" required><br><br>
-        
+        <input type="number" id="x" value="250">
+        <br>
         <label for="y">Centro Y:</label>
-        <input type="number" id="y" name="y" step="any" required><br><br>
-        
-        <label for="l">Lado (L):</label>
-        <input type="number" id="l" name="l" step="any" required><br><br>
-        
-        <label for="n">Número de Lados (n):</label>
-        <input type="number" id="n" name="n" step="1" min="3" required><br><br>
-        
-        <button type="button" onclick="dibujarPoligono()">Dibujar Polígono</button>
+        <input type="number" id="y" value="250">
+        <br>
+        <label for="n">Número de lados:</label>
+        <input type="number" id="n" value="5">
+        <br>
+        <label for="l">Lado del polígono:</label>
+        <input type="number" id="l" disabled>
+        <br>
+        <label for="a">Apotema del polígono:</label>
+        <input type="number" id="a" disabled>
+        <br>
+        <label for="option">Elegiar opción:</label>
+        <select id="option" onchange="cambiarOpcion()">
+            <option value="lado">Lado</option>
+            <option value="apotema">Apotema</option>
+        </select>
+        <br>
+        <button onclick="dibujarPoligono(event)">Dibujar</button>
+
+        <br>
+        <canvas id="canvas" width="500" height="500" style="border:1px solid black;"></canvas>
+
     </form>
-    
+
     <br>
-    
+
     <canvas id="canvas" width="500" height="500"></canvas>
 
     <script src="parcial1-ok.js"></script> <!-- Conexión del archivo JavaScript -->
 </body>
+
 </html>
