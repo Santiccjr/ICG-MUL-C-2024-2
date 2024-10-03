@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puntos y Figuras - Vectorizado</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        #canvasContainer {
+            position: relative;
+            display: inline-block;
+        }
+        svg {
+            border: 1px solid black;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        #result {
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Generador de Puntos - Vectorizado</h1>
+    <div id="canvasContainer">
+        <svg id="svg" width="600" height="400"></svg>
+    </div>
+    <br>
+    <button id="generateBtn">Generar Nuevos Puntos</button>
+    <p id="result"></p>
+    
+    <script src="vectorizado.js"></script>
+</body>
+</html>
