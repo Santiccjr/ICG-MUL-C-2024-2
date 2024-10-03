@@ -31,6 +31,29 @@ function generarPuntos() {
     dibujar();
 }
 
+function ordenarPuntos(puntos) {
+    const centerX = 600 / 2;
+    const centerY = 400 / 2;
+
+    const angulos = puntos.map(p => ({
+        punto: p,
+        angulo: Math.atan2(p.y - centerY, p.x - centerX)
+    }));
+
+    return burbuja(angulos).map(a => a.punto);
+}
+
+function burbuja(angulos) {
+    for (let i = 0; i < angulos.length; i++) {
+        for (let j = 0; j < angulos.length - 1; j++) {
+            if (angulos[j].angulo > angulos[j + 1].angulo) {
+                [angulos[j], angulos[j + 1]] = [angulos[j + 1], angulos[j]];
+            }
+        }
+    }
+    return angulos;
+}
+
 function dibujar() {
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
@@ -38,19 +61,18 @@ function dibujar() {
     // Limpiar canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Ordenar los puntos en sentido antihorario
-    puntos.sort((a, b) => Math.atan2(a.y - canvas.height / 2, a.x - canvas.width / 2) - 
-                          Math.atan2(b.y - canvas.height / 2, b.x - canvas.width / 2));
+    // Ordenar los puntos
+    const puntosOrdenados = ordenarPuntos(puntos);
 
-    const esConvexo = verificarConvexidad(puntos);
+    const esConvexo = verificarConvexidad(puntosOrdenados);
     document.getElementById('result').innerText = esConvexo ? "La figura es convexa." : "La figura es cóncava.";
 
     // Trazado rasterizado
     ctx.beginPath();
-    ctx.moveTo(puntos[0].x, puntos[0].y);
+    ctx.moveTo(puntosOrdenados[0].x, puntosOrdenados[0].y);
 
-    for (let i = 1; i < puntos.length; i++) {
-        ctx.lineTo(puntos[i].x, puntos[i].y);
+    for (let i = 1; i < puntosOrdenados.length; i++) {
+        ctx.lineTo(puntosOrdenados[i].x, puntosOrdenados[i].y);
     }
 
     ctx.closePath();

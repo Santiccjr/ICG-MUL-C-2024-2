@@ -31,19 +31,41 @@ function generarPuntos() {
     dibujar();
 }
 
+function ordenarPuntos(puntos) {
+    const centerX = 600 / 2;
+    const centerY = 400 / 2;
+
+    const angulos = puntos.map(p => ({
+        punto: p,
+        angulo: Math.atan2(p.y - centerY, p.x - centerX)
+    }));
+
+    return burbuja(angulos).map(a => a.punto);
+}
+
+function burbuja(angulos) {
+    for (let i = 0; i < angulos.length; i++) {
+        for (let j = 0; j < angulos.length - 1; j++) {
+            if (angulos[j].angulo > angulos[j + 1].angulo) {
+                [angulos[j], angulos[j + 1]] = [angulos[j + 1], angulos[j]];
+            }
+        }
+    }
+    return angulos;
+}
+
 function dibujar() {
     const svg = document.getElementById('svg');
     svg.innerHTML = ''; // Limpiar SVG
 
-    // Ordenar los puntos en sentido antihorario
-    puntos.sort((a, b) => Math.atan2(a.y - svg.height.baseVal.value / 2, a.x - svg.width.baseVal.value / 2) - 
-                          Math.atan2(b.y - svg.height.baseVal.value / 2, b.x - svg.width.baseVal.value / 2));
+    // Ordenar los puntos
+    const puntosOrdenados = ordenarPuntos(puntos);
 
-    const esConvexo = verificarConvexidad(puntos);
+    const esConvexo = verificarConvexidad(puntosOrdenados);
     document.getElementById('result').innerText = esConvexo ? "La figura es convexa." : "La figura es cóncava.";
 
     // Trazado vectorizado usando SVG
-    const pathData = puntos.reduce((acc, p, i) => {
+    const pathData = puntosOrdenados.reduce((acc, p, i) => {
         return acc + (i === 0 ? `M${p.x},${p.y}` : ` L${p.x},${p.y}`);
     }, '') + ' Z'; // Cerrar la figura
 
